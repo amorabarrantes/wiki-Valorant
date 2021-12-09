@@ -8,7 +8,9 @@ const firstTest = async function () {
 
     console.log(agents);
     const markup = agents.map(agent => {
-        return `<h1>AGENT: ${agent.displayName}</h1>`
+        return `<div class="body--entrie">
+                    <a class="agent">AGENT: ${agent.displayName}</a>
+                </div>`
     }).join(',').replaceAll(',', '');
 
     console.log(markup);
