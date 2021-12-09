@@ -1,22 +1,37 @@
-import * as model from './modal.js';
+import * as model from './model.js';
+import entriesView from './views/entriesView.js';
+import optionsView from './views/optionsView.js';
 
 
-const firstTest = async function () {
-    await model.loadAllAgents();
-    const box = document.querySelector('.main__body--entries');
-    const agents = model.state.agents;
+const controlLoadAll = async function () {
+    try {
+        const id = +window.location.hash.slice(1);
+        if (!id) return;
+        optionsView.enableActiveOption(id)
+        if (id === 1) {
 
-    console.log(agents);
-    const markup = agents.map(agent => {
-        return `<div class="body--entrie">
-                    <a class="agent">AGENT: ${agent.displayName}</a>
-                </div>`
-    }).join(',').replaceAll(',', '');
+            await model.loadAllAgents();
+            entriesView.render(model.state.agents);
+            return;
+        }
 
-    console.log(markup);
+        entriesView.renderError("Error fetching data, try again!");
 
 
-    box.insertAdjacentHTML('afterbegin', markup);
+    } catch (err) {
+        console.log(err);
+        entriesView.renderError();
+    }
 }
 
-firstTest();
+const controlOptionsHash = function (optionId) {
+    window.location.hash = `#${optionId}`;
+}
+
+const init = function () {
+    entriesView.addHandlerRender(controlLoadAll);
+    optionsView.addHandlerClick(controlOptionsHash)
+
+}
+
+init();
