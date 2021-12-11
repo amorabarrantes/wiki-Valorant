@@ -77,7 +77,7 @@ BODY
   overflow: scroll;
   background: rgb(217, 230, 245);
   border-right: black 1px solid;
-  background-color: darkolivegreen;
+  background-color: lightgrey;
 }
 
 .body--entrie {
@@ -90,12 +90,76 @@ BODY
 }
 
 .body--entrie:hover {
-  background-color: rgb(57, 71, 31);
+  background-color: rgba(128, 128, 128, 0.418);
 }
 
 .main__body--results {
   grid-column: 2/6;
-  background: white;
+  display: flex;
+  justify-content: center;
+  background-image: url("https://i.pinimg.com/originals/9d/ee/07/9dee0784390c4d041be8473887a304cc.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.body--result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.body__result--general-info {
+  width: 90%;
+  border-radius: 2rem;
+  color: white;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  gap: 3rem;
+}
+
+.result--name {
+  width: 400px;
+  font-size: 3rem;
+  /*   background-color: green;
+ */
+  align-self: center;
+  text-align: center;
+}
+
+.result--photo {
+  width: 400px;
+  height: 400px;
+
+  /*   background-color: yellow;
+ */
+}
+
+.result--right-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*   background-color: blue;
+ */
+  gap: 2rem;
+  font-size: 3rem;
+  align-self: center;
+}
+
+.result--description {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.result--role-icon {
+  width: 50px;
+  height: 50px;
 }
 
 /*

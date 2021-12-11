@@ -12,17 +12,29 @@ class EntriesView extends View {
         events.forEach(ev => window.addEventListener(ev, handler));
     }
 
+    addHandlerClick(handler) {
+        this._parentElement.addEventListener('click', function (e) {
+            const btn = e.target.closest('.body--entrie');
+            //console.log(e.target);
+            if (!btn) return;
+
+            const agent = btn.querySelector('.agent');
+            const { id } = agent.dataset;
+            handler(id);
+        });
+    }
+
     /*     addHandlerUpdateServings(handler) {
             this._parentElement.addEventListener('click', function (e) {
                 const btn = e.target.closest('.btn--update-servings');
                 if (!btn) return;
-    
+     
                 const { updateTo } = btn.dataset;
-    
+     
                 if (+updateTo > 0) {
                     handler(+updateTo);
                 }
-    
+     
             });
         } */
 
@@ -37,7 +49,7 @@ class EntriesView extends View {
     _generateMarkup() {
         const markup = this._data.map(agent => {
             return `<div class="body--entrie">
-                        <a class="agent">${agent.displayName}</a>
+                        <span class="agent" data-id="${agent.uuid}">${agent.displayName}</span>
                     </div>`
         }).join(',').replaceAll(',', '');
         return markup;
