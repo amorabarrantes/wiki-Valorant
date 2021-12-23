@@ -1,8 +1,8 @@
 import * as model from './model.js';
+import abilitiesView from './views/abilitiesView.js';
 import entriesView from './views/entriesView.js';
 import optionsView from './views/optionsView.js';
-import resultsView from './views/resultsView.js'
-
+import resultAgentsView from './views/resultAgentsView.js'
 
 const controlLoadAll = async function () {
     try {
@@ -24,11 +24,11 @@ const controlLoadAll = async function () {
 const controlLoadAgent = function (id) {
     try {
         const agent = model.state.agents.find(agent => agent.uuid === id);
+        model.state.currentAgent = agent;
         //render agent
-
-        resultsView.render(agent);
+        resultAgentsView.render(agent);
     } catch (err) {
-        resultsView.renderError();
+        resultAgentsView.renderError();
     }
 }
 
@@ -36,10 +36,21 @@ const controlOptionsHash = function (optionId) {
     window.location.hash = `#${optionId}`;
 }
 
+const controlAbilities = function (abilitieName) {
+    try {
+        const abilitie = model.state.currentAgent.abilities.find(abilitie => abilitie.displayName === abilitieName);
+        abilitiesView.render(abilitie, false, 'beforeend');
+    } catch (err) {
+        abilitiesView.renderError(err);
+    }
+
+}
+
 const init = function () {
     optionsView.addHandlerClick(controlOptionsHash);
     entriesView.addHandlerRender(controlLoadAll);
     entriesView.addHandlerClick(controlLoadAgent);
+    resultAgentsView.addHandlerClickAbilities(controlAbilities)
 }
 
 init();
