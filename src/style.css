@@ -279,13 +279,13 @@ Helpers
 
 */
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   :root {
     font-size: 12px;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
   :root {
     font-size: 8px;
   }
