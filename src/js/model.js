@@ -1,14 +1,16 @@
-import { API_AGENT } from './config.js';
+import { API_AGENTS, API_MAPS } from './config.js';
 import { getJSON } from './helper.js';
 
 export const state = {
     agents: {},
-    currentAgent: {}
+    currentAgent: {},
+    maps: {},
+    currentMap: {}
 };
 
 export const loadAllAgents = async function () {
     try {
-        const data = await getJSON(`${API_AGENT}`);
+        const data = await getJSON(`${API_AGENTS}`);
 
         if (data.status !== 200) throw new Error("There was an error fetching data from API");
 
@@ -21,16 +23,14 @@ export const loadAllAgents = async function () {
     }
 };
 
-/* export const loadAgent = async function (id) {
+export const loadAllMaps = async function () {
     try {
-        const data = await getJSON(`${API_AGENT$}${id}`);
+        const data = await getJSON(`${API_MAPS}`);
 
         if (data.status !== 200) throw new Error("There was an error fetching data from API");
 
-        //Delete index 7, cause there's an agent twice (Sova).
-        data.data.splice(7, 1)
-        state.agents = data.data;
+        state.maps = data.data;
     } catch (err) {
         throw err;
-    }   
-}; */
+    }
+};

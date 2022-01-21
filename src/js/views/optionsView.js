@@ -9,8 +9,19 @@ class OptionsView extends View {
 
     addHandlerClick(handler) {
         this._parentElement.addEventListener('click', function (e) {
-            const btn = e.target.closest('.header__option');
+            const btn = e.target.closest('.header__option-Aux');
             if (!btn) return;
+
+            if (btn.classList.contains('header--icon')) {
+                let okToRefresh = confirm("Do you really want to refresh the page?");
+
+                if (!okToRefresh) return;
+
+                window.location.hash = '';
+                history.replaceState(null, null, ' ');
+                document.location.reload(true)
+                return;
+            }
 
             const { id } = btn.dataset;
 
@@ -25,14 +36,14 @@ class OptionsView extends View {
 
     enableActiveOption(id) {
         this._disableAllActives();
-        const options = this._parentElement.querySelectorAll('.header__option');
+        const options = this._parentElement.querySelectorAll('.header__option-Aux');
         options.forEach(opt => {
             +opt.dataset.id === id ? opt.classList.add('active--option') : '';
         });
     }
 
     _disableAllActives() {
-        const options = this._parentElement.querySelectorAll('.header__option');
+        const options = this._parentElement.querySelectorAll('.header__option-Aux');
         options.forEach(opt => opt.classList.remove('active--option'));
     }
 

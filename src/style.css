@@ -38,6 +38,7 @@ HEADER
   height: 50px;
   margin-left: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .header--options {
@@ -66,10 +67,6 @@ HEADER
 BODY
 
 */
-
-.main__body--entries::-webkit-scrollbar {
-  display: none;
-}
 
 .main__body--entries {
   grid-column: 1/2;
@@ -118,26 +115,27 @@ BODY
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   margin-top: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   gap: 3rem;
 }
 
 .result--name {
-  width: 400px;
+  width: 15rem;
   font-size: 3rem;
-  /*   background-color: green;
- */
   align-self: center;
   text-align: center;
 }
 
 .result--photo {
-  width: 400px;
-  height: 400px;
+  max-width: 16em;
+  max-height: 16em;
+}
 
-  /*   background-color: yellow;
- */
+.map--photo2 {
+  max-width: 80%;
+  padding: 2rem;
 }
 
 .result--right-container {
@@ -145,25 +143,31 @@ BODY
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*   background-color: blue;
- */
   gap: 2rem;
   font-size: 3rem;
   align-self: center;
 }
 
+.right--container-role {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .result--description {
-  text-align: center;
+  width: 80%;
+  text-align: justify;
   font-size: 1.3rem;
 }
 
 .result--role-icon {
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
 }
 
 .body__result--abilities-info,
-.body__result--abilities-description {
+.body__result--abilities-description,
+.body__result--map-photo {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -181,14 +185,16 @@ BODY
 
 .abilities--icons {
   display: flex;
-  width: fit-content;
+  width: 50%;
   justify-content: space-evenly;
+  text-align: justify;
+
   gap: 4rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 .abilitie--icon {
-  width: 10%;
+  width: 3rem;
   padding: 0.2rem;
   cursor: pointer;
 }
@@ -198,8 +204,17 @@ BODY
   border-radius: 0.5rem;
 }
 
+.abilities--container {
+  display: flex;
+  justify-content: center;
+}
+
 .selected {
   background-color: red;
+}
+
+.result--coming-soon {
+  font-size: 2rem;
 }
 
 /*
@@ -251,9 +266,50 @@ Helpers
 }
 
 .active--entrie {
-  background-color: blue;
+  background-color: rgba(128, 128, 128, 0.418);
 }
 
 .hidden {
   display: none;
+}
+
+/*
+
+@Media
+
+*/
+
+@media (max-width: 1080px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 750px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .body__result--general-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .result--description {
+    width: 30%;
+  }
+  .result--role-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  .body__result--abilities-info {
+    width: 90%;
+  }
+}
+
+@media (max-width: 350px) {
+  .header__option {
+    margin-left: 25px;
+  }
 }
