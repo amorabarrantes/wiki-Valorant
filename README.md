@@ -11,7 +11,7 @@
 </p>
 
 ## Description
-wiki-Valorant is a practice MVC Project, originally thinked to practice HTML, CSS and Javascript. Also, with this project I practiced API consumption, responsive-design, Javascript(events, classes, inheritance), and finally I used parcel to bundle the application.
+wiki-Valorant is a practice MVC Project, originally thought to practice HTML, CSS and Javascript. Also, with this project I practiced API consumption, responsive-design, Javascript(events, classes, inheritance), and finally I used parcel to bundle the application.
 
 The main purpose of the application, is to be a wiki of the Valorant game, in which the final user can consult from (agent, map or others) information.
 
